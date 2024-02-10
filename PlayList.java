@@ -14,6 +14,8 @@ class PlayList {
         size = 0;
     }
 
+    
+
     /** Returns the maximum size of this play list. */ 
     public int getMaxSize() {
         return maxSize;
@@ -25,6 +27,7 @@ class PlayList {
     }
 
     /** Method to get a track by index */
+        
     public Track getTrack(int index) {
         if (index >= 0 && index < size) {
             return tracks[index];
@@ -32,6 +35,8 @@ class PlayList {
             return null;
         }
     }
+    
+    
     
     /** Appends the given track to the end of this list. 
      *  If the list is full, does nothing and returns false.
@@ -55,9 +60,12 @@ class PlayList {
     /** Returns the data of this list, as a string. Each track appears in a separate line. */
     //// For an efficient implementation, use StringBuilder.
     public String toString() {
-        StringBuilder str = new StringBuilder();
-        return str.toString();
-        //str.append("a")
+        StringBuilder ans = new StringBuilder();
+        for(int i = 0; i < size; i++){
+       ans.append(tracks[i].toString());
+       ans.append("\n");
+        }
+        return ans.toString();
     }
 
     /** Removes the last track from this list. If the list is empty, does nothing. */
@@ -74,8 +82,8 @@ class PlayList {
     /** Returns the total duration (in seconds) of all the tracks in this list.*/
     public int totalDuration() {
        int count = 0;
-       for(int i = 0; i < tracks.length; i++){
-        count += tracks[i].getduration;
+       for(int i = 0; i < size; i++){
+        count += tracks[i].getDuration();
        }
         return count;
     }
@@ -84,7 +92,7 @@ class PlayList {
      *  If such a track is not found, returns -1. */
     public int indexOf(String title) {
         title = title.toLowerCase();
-        for(int i = 0; i < tracks.length; i++){
+        for(int i = 0; i < size; i++){
             if(tracks[i].getTitle().toLowerCase().equals(title)){
                 return i;
             }
@@ -175,8 +183,8 @@ class PlayList {
         }
         int test = 0;
         for( int i = start; i < size; i++){
-            if(test > tracks[i].getduration){
-                test = tracks[i].getduration;
+            if(test > tracks[i].getDuration()){
+                test = tracks[i].getDuration();
                 index++;
             }
         }
@@ -198,7 +206,7 @@ class PlayList {
         // calling the minIndex method in each iteration.
         for(int i = 0; i < size; i++){
         int min = minIndex(maxSize);
-        track temp = tracks[i];
+        Track temp = tracks[i];
         tracks[i] = tracks[min];
         tracks[min] = temp;
         }
