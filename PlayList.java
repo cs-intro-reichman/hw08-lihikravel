@@ -42,9 +42,10 @@ class PlayList {
        if(size == maxSize){
         return false;
        }
-      
+      else{
         tracks[size] = track;
         size++;
+      }
         return true;
        
         
