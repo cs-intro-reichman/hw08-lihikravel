@@ -39,7 +39,7 @@ class PlayList {
      *  If the list is full, does nothing and returns false.
      *  Otherwise, appends the track and returns true. */
     public boolean add(Track track) {
-       if(tracks[maxSize -1] != null){
+       if(size == maxSize){
         return false;
        }
       
