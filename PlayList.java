@@ -125,8 +125,8 @@ class PlayList {
             removeLast();
             return;
         }
-        for(int j = i + 1; j < size -1; j++){
-            tracks[j -1] = tracks[j];
+        for(int j = i + 1; j < size ; j++){
+            tracks[j - 1] = tracks[j];
         }
         tracks[size -1] = null;
         size--;
