@@ -178,15 +178,15 @@ class PlayList {
         if(start < 0 || start > size - 1){
             return -1;
         }
-        else{ 
+        
         int test = tracks[start].getDuration();
-        for( int i = start + 1; i < size; i++){
+        for( int i = start ; i < size; i++){
             if(test > tracks[i].getDuration()){
                 test = tracks[i].getDuration();
                 index = i;
             }
         }
-    }
+    
         return index;
     }
 
@@ -209,8 +209,7 @@ class PlayList {
         for(int i = 0; i < size ; i++){
             int min = this.minIndex(i);
             Track temp = this.tracks[i];
-            Track mint = this.tracks[min];
-            this.tracks[i] = mint;
+            this.tracks[i] = this.tracks[min];
             this.tracks[min] = temp;
         }
 
