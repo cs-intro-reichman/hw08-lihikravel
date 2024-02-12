@@ -179,11 +179,11 @@ class PlayList {
             return -1;
         }
         else{ 
-        int test = 0;
-        for( int i = start; i < size; i++){
+        int test = tracks[start].getDuration();
+        for( int i = start + 1; i < size; i++){
             if(test > tracks[i].getDuration()){
                 test = tracks[i].getDuration();
-                index++;
+                index = i;
             }
         }
     }
