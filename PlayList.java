@@ -1,4 +1,4 @@
-import javax.sound.midi.Track;
+
 
 /** Represnts a list of musical tracks. The list has a maximum capacity (int),
  *  and an actual size (number of tracks in the list, an int). */
@@ -10,14 +10,11 @@ class PlayList {
     /** Constructs an empty play list with a maximum number of tracks. */ 
     public PlayList(int maxSize) {
         this.maxSize = maxSize;
-        tracks = new Track[maxSize];
-        size = 0;
+        this.tracks = new Track[maxSize];
+        this.size = 0;
     }
-
-    
-
-    /** Returns the maximum size of this play list. */ 
-    public int getMaxSize() {
+      /** Returns the maximum size of this play list. */ 
+      public int getMaxSize() {
         return maxSize;
     }
     
@@ -42,19 +39,21 @@ class PlayList {
      *  If the list is full, does nothing and returns false.
      *  Otherwise, appends the track and returns true. */
     public boolean add(Track track) {
-       if(tracks[tracks.length -1] != null){
+       if(tracks[maxSize -1] != null){
         return false;
        }
        int index = 0;
-       while ((index < tracks.length && tracks[index] != null)) {
+       while ((index < maxSize && tracks[index] != null)) {
         index++;
        }
-       if(index < tracks.length){
-       tracks[index] = track;
+        if(index < maxSize){
+        tracks[index] = track;
+        size++;
         return true;
        }
        else 
        return false;
+       
     }
 
     /** Returns the data of this list, as a string. Each track appears in a separate line. */
@@ -71,11 +70,12 @@ class PlayList {
     /** Removes the last track from this list. If the list is empty, does nothing. */
      public void removeLast() {
         int index = 0;
-        while ((index < tracks.length && tracks[index] != null)) {
+        while ((index < maxSize && tracks[index] != null)) {
             index++;
             }
         if(tracks[0] != null){
             tracks[index -1] = null;
+            size--;
         }
     }
     
@@ -83,8 +83,10 @@ class PlayList {
     public int totalDuration() {
        int count = 0;
        for(int i = 0; i < size; i++){
+        if (tracks [i] != null){
         count += tracks[i].getDuration();
        }
+    }
         return count;
     }
 
