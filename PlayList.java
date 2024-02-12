@@ -172,10 +172,11 @@ class PlayList {
      *  If start is negative or greater than size - 1, returns -1.
      */
     private int minIndex(int start) {
-        int index = 0;
+        int index = start;
         if(start < 0 || start > size - 1){
             return -1;
         }
+        else{ 
         int test = 0;
         for( int i = start; i < size; i++){
             if(test > tracks[i].getDuration()){
@@ -183,6 +184,7 @@ class PlayList {
                 index++;
             }
         }
+    }
         return index;
     }
 
@@ -199,12 +201,12 @@ class PlayList {
     public void sortedInPlace() {
         // Uses the selection sort algorithm,  
         // calling the minIndex method in each iteration.
-        for(int i = 0; i < size; i++){
+        for(int i = 0; i < size ; i++){
         int min = minIndex(i);
         Track temp = tracks[i];
         tracks[i] = tracks[min];
         tracks[min] = temp;
         }
-        return;
+
     }
 }
