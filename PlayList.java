@@ -209,7 +209,8 @@ class PlayList {
         for(int i = 0; i < size ; i++){
             int min = this.minIndex(i);
             Track temp = this.tracks[i];
-            this.tracks[i] = this.tracks[min];
+            Track mint = this.tracks[min];
+            this.tracks[i] = mint;
             this.tracks[min] = temp;
         }
 
