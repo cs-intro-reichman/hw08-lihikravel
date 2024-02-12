@@ -205,5 +205,6 @@ class PlayList {
         tracks[i] = tracks[min];
         tracks[min] = temp;
         }
+        return;
     }
 }
