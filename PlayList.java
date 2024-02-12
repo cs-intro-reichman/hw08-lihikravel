@@ -207,10 +207,10 @@ class PlayList {
         // Uses the selection sort algorithm,  
         // calling the minIndex method in each iteration.
         for(int i = 0; i < size ; i++){
-        int min = minIndex(i);
-        Track temp = tracks[i];
-        tracks[i] = tracks[min];
-        tracks[min] = temp;
+            int min = minIndex(i);
+            Track temp = this.tracks[i];
+            this.tracks[i] = this.tracks[min];
+            this.tracks[min] = temp;
         }
 
     }
