@@ -206,6 +206,7 @@ class PlayList {
             this.tracks[min] = temp;
             // System.out.println(this.toString());
         }
+         System.out.println(this.toString());
 
     }
 }
