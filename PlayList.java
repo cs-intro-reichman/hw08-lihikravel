@@ -200,7 +200,7 @@ class PlayList {
         // Uses the selection sort algorithm,  
         // calling the minIndex method in each iteration.
         for(int i = 0; i < size; i++){
-        int min = minIndex(maxSize);
+        int min = minIndex(0);
         Track temp = tracks[i];
         tracks[i] = tracks[min];
         tracks[min] = temp;
