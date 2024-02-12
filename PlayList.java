@@ -103,23 +103,14 @@ class PlayList {
      *  is full, does nothing and returns false. Otherwise, inserts the track and
      *  returns true. */
     public boolean add(int i, Track track) {
-        if(i >= maxSize || i < 0 || size >= maxSize)
+       if(size == maxSize){
         return false;
-
-        if(size == 0){
-            add(track);
-            return true;
-        }
-        if(i == size){
-            add(track);
-            return true;
-        }
-        for(int j = size - 1; j >= i; j--){
-            tracks[j + 1] = tracks[j];
-        }
-        tracks[i] = track;
+       }
+       else{
+        tracks[size] = track;
         size++;
-        return true;
+       }
+       return true;
     }
      
     /** Removes the track in the given index from this list.
