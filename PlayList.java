@@ -39,21 +39,14 @@ class PlayList {
      *  If the list is full, does nothing and returns false.
      *  Otherwise, appends the track and returns true. */
     public boolean add(Track track) {
-       if(tracks[maxSize -1] != null){
+      if(size == maxSize){
         return false;
-       }
-       int index = 0;
-       while ((index < maxSize && tracks[index] != null)) {
-        index++;
-       }
-        if(index < maxSize){
-        tracks[index] = track;
+      }
+      else{
+        tracks[size] = track;
         size++;
-        return true;
-       }
-       else 
-       return false;
-       
+      }
+      return true;
     }
 
     /** Returns the data of this list, as a string. Each track appears in a separate line. */
@@ -103,14 +96,23 @@ class PlayList {
      *  is full, does nothing and returns false. Otherwise, inserts the track and
      *  returns true. */
     public boolean add(int i, Track track) {
-       if(size == maxSize){
+        if(i >= maxSize || i < 0 || size >= maxSize)
         return false;
-       }
-       else{
-        tracks[size] = track;
+
+        if(size == 0){
+            add(track);
+            return true;
+        }
+        if(i == size){
+            add(track);
+            return true;
+        }
+        for(int j = size - 1; j >= i; j--){
+            tracks[j + 1] = tracks[j];
+        }
+        tracks[i] = track;
         size++;
-       }
-       return true;
+        return true;
     }
      
     /** Removes the track in the given index from this list.
@@ -171,7 +173,7 @@ class PlayList {
         }
         
         int test = tracks[start].getDuration();
-        for( int i = start +1; i < size; i++){
+        for( int i = start + 1; i < size; i++){
             if(test > tracks[i].getDuration()){
                 test = tracks[i].getDuration();
                 index = i;
