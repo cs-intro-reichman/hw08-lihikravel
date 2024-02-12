@@ -39,24 +39,21 @@ class PlayList {
      *  If the list is full, does nothing and returns false.
      *  Otherwise, appends the track and returns true. */
     public boolean add(Track track) {
-        if (size == maxSize){
-            return false;
-        }
-        else {
-            tracks [size] = track;
+       if(tracks[maxSize -1] != null){
+        return false;
+       }
+       int index = 0;
+       while ((index < maxSize && tracks[index] != null)) {
+        index++;
+       }
+        if(index < maxSize){
+        tracks[index] = track;
         size++;
-        }
         return true;
-    //    if(size == maxSize){
-    //     return false;
-    //    }
-    //   else{
-    //     tracks[size] = track;
-    //     size++;
-    //   }
-    //     return true;
+       }
+       else 
+       return false;
        
-        
     }
 
     /** Returns the data of this list, as a string. Each track appears in a separate line. */
@@ -183,7 +180,7 @@ class PlayList {
         }
         
         int test = tracks[start].getDuration();
-        for( int i = start + 1; i < size; i++){
+        for( int i = start +1; i < size; i++){
             if(test > tracks[i].getDuration()){
                 test = tracks[i].getDuration();
                 index = i;
