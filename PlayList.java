@@ -121,7 +121,7 @@ class PlayList {
     public void remove(int i) {
         if(i >= maxSize || i < 0 || size == 0)
         return ;
-        if(i == size -1){
+        if(i >= size -1){
             removeLast();
             return;
         }
@@ -206,7 +206,5 @@ class PlayList {
             this.tracks[min] = temp;
             
         }
-        
-
     }
 }
