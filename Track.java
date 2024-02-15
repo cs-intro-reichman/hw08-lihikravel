@@ -4,7 +4,7 @@ class Track {
     private String title;
     private String artist;
     private int duration;
-
+   
     /** Constructs a track from the given values. */
     public Track(String title, String artist, int duration) {
         this.title = title;
@@ -15,7 +15,7 @@ class Track {
     /** Returns this track's data as "artist, title, minutes:seconds".
      *  For example, "John Lennon, Imagine, 3:07" */
     public String toString() {
-        //// Replace the following statement with code that returns
+        
         //// the data of this track according to the method's documentation.
         return artist + ", " + title + ", " + duration;
     }
@@ -37,12 +37,21 @@ class Track {
      *  returns true; otherwise returns false. */
     public boolean isShorterThan(Track other) {
         return duration < other.duration;
+
     }
 
     // Returns a string that represents the totalSeconds as "minutes:seconds",
     // Where seconds is always two digits. For example, "3:17" or "12:05".
     private String formattedDuration(int totalSeconds) {
-        //// replace the following statement with your code
-        return "";
+       int min = totalSeconds / 60;
+       String time = min + ":";
+       int sec = totalSeconds % 60;
+       if(sec < 10){
+        time += 0 + sec;
+       }
+       else{
+        time += sec;
+       }
+        return time;
     }
 }
